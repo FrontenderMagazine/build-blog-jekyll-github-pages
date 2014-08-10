@@ -1,6 +1,5 @@
-<article class="post-197342 post type-post status-publish format-standard has-
-post-thumbnail hentry category-coding tag-cms tag-frameworks tag-workflow post
-">
+# Build A Blog With Jekyll And GitHub Pages
+
 I recently migrated my blog from WordPress to Jekyll, a fantastic website
 generator that’s designed for building minimal, static blogs to be hosted on 
 GitHub Pages. The simplicity of Jekyll’s theming layer and writing workflow is 
