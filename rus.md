@@ -138,12 +138,12 @@ Jekyll берет контент написанный в маркдаун, пр�
 
 Нажмите кнопку «Settings» в форке репозитория (меню справа), и измените имя репозитория на `yourusername.github.io`, заменив `yourusername` на ваше имя пользователя GitHub.
 
-Сайт скорее станет доступен немедлено. Это можно проверить открыв `http://yourusername.github.io`. Если ещё не доступен — не беспокойтесь пока: Шаг 3 запустит сборку принудительно.
+Сайт скорее станет доступен немедлено. Это можно проверить открыв `http://yourusername.github.io`. Если ещё не доступен — не беспокойтесь пока: на Шаге 3 мы выясним как вызвать сборку.
 
 ![Базовая тема блога непосредственно после форка будет выглядеть следующим образом.][18]
 
 *Базовая тема блога непосредственно после форка будет выглядеть следующим образом. (Источник:[Jekyll Now][6]) (
-[Картинка в высоком разрешении][20])*
+[В высоком разрешении][20])*
 
 Уф! Мы быстро продвигаемся. Уже запустили сайт на Jekyll! Давайте сделаем шаг назад и рассмотрим наиболее часто встречающиеся проблемы, которые стоит иметь в виду, размещая сайт на Jekyll в GitHub Pages.
 
@@ -156,78 +156,45 @@ Jekyll берет контент написанный в маркдаун, пр�
 
 ### 3. Адаптируем сайт
 
-You can now change your website’s name, description, avatar and other options
-by editing the`_config.yml` file. These custom variables have been set up for
-convenience and are pulled into your theme when your website gets built.
+Теперь можно изменить имя сайта, его описание, аватар и прочие настройки отредактировав файл `_config.yml`. Эти пользовательские переменные были для удобства вынесены для удобства и подтянутся темой сайта во время сборки.
 
-Making a change to `_config.yml` (or any file in your repository) will force
-GitHub Pages to rebuild your website with Jekyll. The rebuilt website will be
-viewable a few seconds later at`http://yourusername.github.io`. If your website
-wasn’t live immediately after step 2, it will be after this step.
+Изменение `_config.yml` (или любого файл в репозитории) вызовет повторную сборку сайта. Увидеть результат можно будет через пару секунд по адресу `http://yourusername.github.io`. Если после Шага 2 сайт не появился, то появится после этого.
 
-Go ahead and customize your website by updating the variables in your
-`_config.yml` file and then committing the changes.
+Вперед, адаптируйте сайт под себя изменяя переменные в `_config.yml` и комитя изменения.
 
-You can change your blog’s files from here on in one of three ways. Pick
-whichever suits you best:
+Вы можете изменять файлы блога одним из трех способов. Выберите тот, который больше устраивает:
 
-*   Edit files in your new `username.github.io` repository directly in the
-    browser at GitHub.com (as shown below
-    ).
-*   Use a third-party GitHub content editor, such as [Prose][32][22][33] by
-    Development Seed. It’s optimized for Jekyll, which makes it easy to edit
-    Markdown, write drafts and upload images.
+* Редактируйте файлы непосредственно в вашем репозитории `username.github.io` в браузере на сайте GitHub.com (как показано ниже).
+* Используйте сторонний редактор, поддерживающий работу с GitHub, такой как [Prose][32], разработанный Development Seed. Он оптимизирован для работы с Jekyll, что упрощает редактирование Markdown, создание черновиков и загрузку изображений.
+* Клинировать репозиторий и внести правки локально, затем — пушнуть все обратно в репозиторий GitHub ([у Atlassian даже есть гайд][34], как это сделать).
 
-*   Clone your repository and make updates locally, and then push them to your
-    GitHub repository
-    ([Atlassian has a guide][34][23][35] on this).<figure>
+![Редактируем _config.yml на GitHub.com][36]
 
-![Editing your website’s _config.yml on GitHub.com ][36][24][37]<figcaption>
-Editing your website’s`_config.yml` on GitHub.com. (Image credit:
-[Jekyll Now][6][51][7][25][8][15][9][9][10]) ([View large version][38][26][39]
-**Common problem #5**: Don’t assume that you need to `jekyll build` the website
-locally in order to customize and theme a Jekyll website. GitHub Pages does that
-for you. You just need to place the files that you want to be built in the
-master branch of your user repository or in the`gh-pages` branch of any other
-repository, and then GitHub Pages will process it with Jekyll.
+*Редактируем _config.yml на GitHub.com. (Источник: [Jekyll Now][6]) ([В высоком разрешении][38])*
 
-### 4. Publish Your First Blog Post
+**Проблема №5**: Не думайте, что понадобится выполнять `jekyll build` локально, что бы изменить тему Jekyll. GitHub Pages сделает это за вас. Достаточно поместить файлы, которые нужно собрать, в ветку `master` данного репозитория или `gh-pages` любого другого репозитория и GitHub Pages соберут их используя Jekyll.
 
-Your website is now customized, live and looking good. You just have to publish
-your first blog post:
 
-1.  Edit `/_posts/2014-3-3-Hello-World.md`, deleting the placeholder content
-    and entering your own. If you need a quick primer on writing in Markdown, check
-    out
-   [Adam Pritchard’s cheat sheet][40][27][41].
-2.  Change the file name to include today’s date and the title of your post.
-    Jekyll requires posts to be named
-   `year-month-day-title.md`.
-3.  Update the title at the top of the Markdown file. Those variables at the
-    top of the blog post are called front matter, which we’ll dig into a little
-    later. In this case, they specify which layout to use and the title of the blog
-    post.
-   [Additional front-matter variables][42][28][43] exist, such as `permalink`
-   `tags` and `category`.
+### 4. Публикуем первую статью
 
-If you’d like to create new blog posts in the browser on GitHub.com, simply
-hit the “+” icon in`/_posts/`. Just remember to format the file name correctly
-and to include the front-matter block so that the file gets processed by Jekyll.
+Сайт теперь настроен, работает и отлично выглядит. Осталось опубликовать первую статью:
 
-![Creating a new post on GitHub.com][44][29][45]<figcaption>Creating a new post
-on GitHub.com.
-([View large version][46][30][47])</figcaption></figure>
-**Common problem #6**: One concern I had about using Jekyll for my blog was
-that it has no CMS, so I wouldn’t have the convenience of being able to make
-quick edits by logging into a CMS interface when I’m away from my laptop. It
-turns out that your Jekyll blog will have a CMS if you use GitHub Pages, because
-GitHub itself serves as the CMS. You can edit posts in the browser, even on your
-phone if you wish. It might not be as convenient as other CMS’, but you won’t be
-stuck when you’re away from your computer and need to make a change.
+1. Отредактируйте `/_posts/2014-3-3-Hello-World.md`, удалите рыбу и введите то, что хотите. Если нужно быстро напомнить основы использования Markdown, посмотрите [шпаргалку Адама Причарда (Adam Pritchard)][40].
+2. Измените имя файла, что бы оно включало текущую дату и заголовок поста. Jekyll предъявляет требования к именованию: `year-month-day-title.md`.
+3. Обновите заголовок. Переменные в начале файла называются вводным блоком, мы рассмотрим их более подробно немного позже. В данном случае они определяют то, какой лаяут использовать и заголовок статьи. Существуют и [другие переменные, которые можно испльзовать во вводном блоке][42], например, `permalink`, `tags` и `category`.
 
-### Optional Steps
+Если захотите создать новую статью в браузере на GitHub.com, просто нажмите иконку «+» находясь в директорие `/_posts/`. Главное не забывайте придерживаться формата имени файлов и добавлять вводной блок, что бы файлы обрабатывались Jekyll.
 
-#### Use Your Own Domain
+![Создание новой статьи прямо на сайте GitHub.com][44]
+
+*Создание новой статьи прямо на сайте GitHub.com. ([В высоком разрешении][46])*
+
+**Проблема №6**: Единственная проблема с использованием Jekyll, с которой я столкнулся при создании блога — отсутствие CMS, так что я не мог комфортно логиниться в CMS, что бы сделать быстрые правки, когда я был не за своим ноутбуком. Оказалось, блог на Jekyll будет обладать CMS, если использовать GitHub Pages, так как роль CMS исполняет сам GitHub. Можете редактировать статьи в браузере, даже с телефона, если хотите. Даже если это и не так удобно, как в других CMS, но ничего не застопорится, даже если вы окажетесь далеко от своего компьютера и нужно будет внести изменения.
+
+
+### Не обязательные шаги
+
+#### Использование своего доменного имени
 
 Configuring your domain name to point to GitHub Pages is a simple two-step
 process:
