@@ -14,7 +14,7 @@
   доменное имя и писать статьи в любимом редакторе;
 * как создавать темы для Jekyll, на пример Liquid;
 * несколько новых функций Jekyll 2.0, включая поддержку Sass
-   и CoffeeScript и коллекций.
+  и CoffeeScript и коллекций.
 
 
 ## Назначение Jekyll
@@ -92,102 +92,69 @@ Jekyll берет контент написанный в маркдаун, пр�
 ## Давайте попробуем
 
 Есть несколько способов разобраться с Jekyll, у каждого свои
- особенности. Вот несколько вариантов:
+особенности. Вот несколько вариантов:
 
 * Установите Jekyll локально используя консоль и создайте
-  новый бойлерплейт, используя комманда `jekyll new`,
+  новый бойлерплейт, коммандой `jekyll new`,
   соберите его коммандой `jekyll build` и выложите.
   ([Вебсайт Jekyll][4] показывает процес.)
+* Клонируйте репозиторий с заготовкой на локальную машину,
+  установите из консоли локально Jekyll, внесите правки, соберите
+  локально, выложите.
+* Форкните репозиторий с заготовкой, измените, выложите.
 
-* Клонируйте
+Давайте начнем с самого быстрого и простого: форкнем репозиторий
+с заготовкой. Это позволит нам запуститься проект в считанные
+минут, и нам не придется устанавливать все зависимости. Вот что
+мы сделаем прямо на GitHub.com в браузере:
 
-
-*   Clone a starting point to your local machine, install Jekyll locally via
-    the command line, make updates to your website, build it locally, and then serve
-    it.
-
-*   Fork a starting point, make changes, and then serve it.
-
-We’ll get started with the quickest and easiest option: forking a starting
-point. This will get us up and running in a few minutes, and we won’t have to
-install any dependancies. Here’s what we’re going to do directly on GitHub.com
-in the browser:
-
-1.  Create our Jekyll powered website.
-2.  Host it for free on GitHub Pages.
-3.  Customize it to include our name, avatar and social links.
-4.  Publish our first blog post!
+1. Создадим сайт на базе Jekyll
+2. Бесплатно разместим на GitHub Pages.
+3. Изменим так, что бы он включал наше имя, аватар и ссылки на
+   социальные сети.
+4. Опубликуем наш первый пост!
 
 
-### 1. Fork A Starting Point
+### 1. Форкните заготовку
 
-We’ll start by forking a repository that has followed best practices and the
-workflows that we’ll be covering in this article. This will get us on the right
-track and save a lot of time.
+Начнем с создания форка репозитория, и это соответствует лучшим практикам и рабочим процессам, которые мы рассматриваем в этой статье. Это направит нас в верном направлении и сбережет нам уйму времени.
 
-I have prepared a repository for us already. Head to [Jekyll Now][12][11][13],
-and hit the “Fork” button in the top-right corner of the repository to fork a
-copy of the blog theme to your GitHub account.<figure>
+Я уже создал нам репозиторий. Откройте [Jekyll Now][12], и нажмите кнопку «Fork» в верхнем правом углу страницы, что бы создать форк темы блога в вашу учетную запись GitHub.
 
-![step1][14][12][15]<figcaption>Walkthrough of steps 1 and 2. (
-[View large version][16][13][17])</figcaption></figure>
-Starting with a fork is great because it will give you a feel for what Jekyll
-is like before you have to set up a local development environment, install
-dependencies and figure out Jekyll’s build process.
+![Шаг 1][14]
 
-**Common problem #1**: Creating a Jekyll website through the local command line
-can be frustrating and time-consuming because you have to**install and
-configure dependencies** like Ruby and RubyGems. Let GitHub Pages build the
-website for you, until you have a real need to build it locally.
+*Инструкция к шагам 1 и 2. ([Картинка в высоком разрешении][16])*
 
-### 2. Host On Your GitHub Account
+Начинать с форка это здорово, ведь позволит выяснить, что из себя представляет Jekyll до того, как поднимать окружение для разработки локально, устанавливать зависимости и разбираться с процессом сборки.
 
-As a GitHub user, you’re entitled to one free “user” website (as opposed
-to a “project” website), which will live at`http://yourusername.github.io`.
-This space is ideal for hosting a Jekyll blog!
+**Проблема №1**: Создание сайта на базе Jekyll используя терминал может раздражать и требовать времени так как надо **установить и настроить зависимости**, например Ruby и RubyGems. Позвольте GitHub Pages собрать сайт, пока не возникнет реальной причины делать сборку локально.
 
-The best part is that you can simply place your unbuilt Jekyll blog on the
-master branch of your user repository, and GitHub Pages will build the static
-website and serve it for you. You don’t have to worry about the build process at
-all — it’s all taken care of.
 
-Click the “Settings” button in your new forked repository (in the menu on
-the right), and change the repository’s name to`yourusername.github.io`,
-replacing`yourusername` with your GitHub user name.
+### 2. Разместим сайт на вашей записи GitHub
 
-Your website will probably go live immediately. You can check by going to
-`http://yourusername.github.io`. Don’t worry if it isn’t live yet: Step 3
-will force it to be built.<figure>
+Как пользователь GitHub вы можете создавать бесплатно «пользовательские» сайты (в отличии от веб-сайтов «проектов»), которые будут доступны по адресу `http://yourusername.github.io`. Идеально для хостинга блока на базе Jekyll!
 
-![The base theme of your blog will look like this after being forked.][18]
-[14][19]<figcaption>The base theme of your blog will look like this after being
-forked. (Image:[Jekyll Now][6][51][7][25][8][15][9][9][10]) (
-[View large version][20][16][21])</figcaption></figure>
-Whew! We’re moving fast here. We already have a Jekyll website up and running
-! Let’s step back for a second and look at some of the most common issues to be
-aware of when hosting a Jekyll website on GitHub Pages.
+Лучше всего то, что вы просто помещаете блог на Jekyll в ветку `master` репозитория и GitHub Pages сами соберут статический сайт и будут его раздавать. Вобще не нужно беспокоится о процессе сборки — об этом уже позаботились.
 
-**Common problem #2**: Be aware of the difference between
-[user websites and project websites][22][17][23] on GitHub. With a user website
-(which we’re setting up), you don’t need to do any branching. The`master`
-branch is already configured to run anything placed on it through Jekyll. You
-don’t need to set up a`gh-pages` branch.
+Нажмите кнопку «Settings» в форке репозитория (меню справа), и измените имя репозитория на `yourusername.github.io`, заменив `yourusername` на ваше имя пользователя GitHub.
 
-**Common problem #3**: Using a project website for your Jekyll website
-[introduces some complexity][24][18][25] because your website will be published
-to a subdirectory. The URL will look like
-`http://yourname.github.io/repository-name`, which will cause problems in
-Jekyll templates, such as breaking references to images and not letting you
-preview the website locally.
+Сайт скорее станет доступен немедлено. Это можно проверить открыв `http://yourusername.github.io`. Если ещё не доступен — не беспокойтесь пока: Шаг 3 запустит сборку принудительно.
 
-**Common problem #4**: Jekyll has a [lot of plugins][26][19][27], but GitHub
-Pages supports only a[few of them][28][20][29]. If you try to include a plugin
-that isn’t supported, then Jekyll will fail while building your website. So,
-stick to the supported list. Luckily, my favorite plugin is on the list:
-[Jemoji][30][21][31] lets you include emoji in blog posts, just like you would
-on GitHub and Basecamp.
+![Базовая тема блога непосредственно после форка будет выглядеть следующим образом.][18]
 
-### 3. Customize Your Website
+*Базовая тема блога непосредственно после форка будет выглядеть следующим образом. (Источник:[Jekyll Now][6]) (
+[Картинка в высоком разрешении][20])*
+
+Уф! Мы быстро продвигаемся. Уже запустили сайт на Jekyll! Давайте сделаем шаг назад и рассмотрим наиболее часто встречающиеся проблемы, которые стоит иметь в виду, размещая сайт на Jekyll в GitHub Pages.
+
+**Проблема №2**: нужно понимать различия между [сайта пользователя и проекта][22] на GitHub. Для пользовательского сайта (который мы делаем) не нужно создавать никакие ветки, `master` и так сконфигурирована так, что бы передавать всё, что в неё помещают Jekyll. Нет нужды создавать ветку `gh-pages`.
+
+**Проблема №3**: использование сайта проекта [немного все усложняет][24], так как сайт будет опубликоват в поддиректорий. URL будет выглядеть как `http://yourname.github.io/repository-name`, что вызовет проблемы с шаблонами Jekyll, например, битые ссылки на изображения и невозможность посмотреть сайт локально.
+
+**Проблема №4**: для Jekyll существует [масса плагинов][26], но GitHub Pages поддерживает [всего несколько из них][28]. Если попробуете подключить плагин, который не поддерживается, Jekyll не сможет собрать сайт. Так что строго придерживайтесь списка плагинов, которые поддерживаются. Благо мой любимый плагин в списке: [Jemoji][30], он позволяет добавлять в статьи [emoji][100], так же как на GitHub и Basecamp.
+
+
+### 3. Адаптируем сайт
 
 You can now change your website’s name, description, avatar and other options
 by editing the`_config.yml` file. These custom variables have been set up for
@@ -700,3 +667,6 @@ Jekyll идеальным для блога и портфолио и дает в
  [87]: http://jekyllrb.com
 
  [89]: http://github.com/jekyll/jekyll
+
+
+ [100]: http://en.wikipedia.org/wiki/Emoji
