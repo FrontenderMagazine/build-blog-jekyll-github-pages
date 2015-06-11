@@ -196,82 +196,74 @@ Jekyll берет контент написанный в маркдаун, пр�
 
 #### Использование своего доменного имени
 
-Configuring your domain name to point to GitHub Pages is a simple two-step
-process:
+Настройка доменного имени так, что бы оно указывало на GitHub Pages это простой процесс состоящий из двух шагов:
 
-1.  Go to the root of your blog’s repository, and edit the CNAME file to
-    include your domain name (for example,
-   `www.yourdomainname.com`).
-2.  Go to your domain name registrar, and add a CNAME DNS record pointing your
-    domain to GitHub Pages:
+1. Создайте в корневом директорие репозитория файл CNAME так, что бы он содержал нужное доменное имя (например, `www.yourdomainname.com`).
+2. У регистратора доменного имени добавьте в настройках DNS запись CNAME, указывающую на GitHub Pages:
+  * type: `CNAME`
+  * host: `www.yourdomainname.com`
+  * answer: `yourusername.github.io`
+  * TTL: `300`
 
-    *   type: `CNAME`
-    *   host: `www.yourdomainname.com`
-    *   answer: `yourusername.github.io`
-    *   TTL: `300`
-
-Then, refresh [What’s My DNS][48][31][49] like crazy until you’ve propagated
-. If you run into any problems, refer to
-“[Setting Up a Custom Domain With GitHub Pages][50][32][51].”
-
-#### Import Your Blog Posts From WordPress
-
-Before importing, you’ll need to export your data from WordPress, possibly
-massaging the data a little (for example, by updating the image references), and
-then import it into your new Jekyll website. Fortunately, a few great tools can
-help.
-
-To **export from WordPress**, I’d highly recommend Ben Balter’s one-click
-[WordPress to Jekyll Exporter][52][33][53] plugin. It exports all of your
-WordPress content as a ZIP file, including posts, images and meta data,
-converting it to Jekyll’s format where needed. Good on you, Ben.
-
-The other option is to export all content in the “Tools” menu of the
-WordPress dashboard, and then importing it with[Jekyll’s importer][54][34][55]
-
-Next, we need to **update our image references**. Ben Balter’s plugin will
-export all of your images into a folder. Then, you’ll need to copy them to
-wherever you’re hosting your images on your Jekyll blog. This could be in an
-`/images` folder or on a content delivery network.
-
-Then, you have the fun task of updating all of the links to these images across
-your WordPress content. Because I was only updating five or six posts, a quick
-find-and-replace worked well, but if you have a lot of content, then it might be
-worth writing a script or checking out scripts that others have written, such as
-[Paul Stamatiou’s][56][35][57].
-
-Finally, we have to **import comments**. Being a platform for static websites,
-Jekyll doesn’t support comments. However, a hosted solution like Disqus works
-really well! I’d recommend[importing your WordPress comments to Disqus][58]
-[36][59]. Then, if you’re using Jekyll Now, you can enter your Disqus user
-name in`_config.yml` and you’re set.
-
-#### Blog Locally in Your Favorite Editor {#bloglocallyinyourfavoriteeditor}
-
-If you prefer to write in Sublime, Vim, Atom or another editor, all you need to
-do is clone to your repository, create new Markdown blog posts in the`_posts`
-folder, and then push the changes to GitHub. GitHub Pages will automatically
-rebuild your website as soon as your Markdown file hits the repository, and your
-new blog post will be live as soon as the build is complete.
-
-1.  First, `git clone git@github.com:yourusername/yourusername.github.io.git`,
-    or clone your repository using
-   [GitHub Mac][60][37][61].
-2.  Create a new post in the `_posts` folder. Remember to name it in the format
-   `year-month-day-title.md`, and include the front matter at the top of the
-    post.
-
-3.  Commit the post’s Markdown file, and push to your GitHub repository. (
-    [Atlassian’s guide to Git’s basics][34][38][62] might come in handy.)
-4.  That’s it! Just wait for GitHub Pages to rebuild your website. This
-    typically takes under 10 seconds, assuming you don’t have a huge amount of
-    content.
+Затем обновляйте [What’s My DNS][48] как ненормальные, пока новая информация о новой записи не распространится. Если столкнетесь с проблемами, обратитесь к документации: «[Настройка пользовательского доменного имени при работе с GitHub Pages][50]».
 
 
-**Common problem #7**: Again, you don’t need to build your Jekyll website
-locally in order to write a blog post locally and publish it to your website.
-You can write the Markdown post locally and push it with any images you’ve used,
-and then GitHub Pages will rebuild the website for you on the server.
+#### Импорт статей из WordPress
+
+До того, как импортировать статьи в блог их надо сначала экспортировать из
+WordPress, возможно немного адаптировав (например, обновив ссылки на изображения).
+И только затем — испортировать в Jekyll-блог. К счастью есть несколько инструментов,
+которые будут полезны.
+
+Что бы **экспортировать статьи из WordPress**, я очень рекомендую
+[WordPress to Jekyll Exporter][52] Бена Балтера (Ben Balter), который позволяет
+сделать это в один клик. Он экспортирует весь контент WordPress, включая статьи,
+изображения и мета-данные, конвертирует, там где нужно, в подходящий для Jekyll
+формат и выдает в виде ZIP-архива. Спасибо тебе, Бен.
+
+Ещё один вариант — экспортировать все содержимое WordPress в меню «Tools» панели
+администрирования, и затем импортировать используя [Jekyll’s importer][54].
+
+Затем, нужно **обновить ссылки на изображения**. Плагин написанный Беном Балтером
+экспортирует все изображения в папку. Затем их нужно будет скопировать туда, где
+вы хостите свои изображения для Jekyll-блога. Это может быть папка `/images` или
+CDN.
+
+После этого перед нами стоит задача обновить все ссылки на изображения в статьях.
+Так как я обновлял всего пять-шесть статей, то быстрый поиск и замена отлично
+подошли, но если материалов много, тогда, возможно, стоит написать скрипт или
+подобрать уже готовый, как например скрипт [Паула Стаматиуса (Paul Stamatiou)][56].
+
+И, наконец, нужно **импортировать комментарии**. Так как Jekyll — платформа для
+статических сайтов, он не поддерживает комментарии. Однако, решения вроде Disqus
+отлично подходят для такого блога!  Я рекомендую [импортировать комментарии из
+WordPress в Disqus][58]. Затем, если вы используете Jekyll Now, можете ввести
+имя пользователя Disqus в `_config.yml` и все, готово.
+
+
+#### Написание статей локально в любимом текстовом редакторе
+
+Если вы предпочитаете писать статьи в Sublime, Vim, Atom или другом редакторе,
+всё, что нужно сделать — клонировать репозиторий, создать новый пост в Markdown
+в директорие `_posts` и затем запушить изменения на GitHub. GitHub Pages
+автоматически пересоберут сайт, как только файл с маркдауном попадет в
+репозиторий и новая статья появится в блоге сразу после того, как закончится сборка.
+
+1. Сначала выполните команду `git clone git@github.com:yourusername/yourusername.github.io.git`,
+   или клонируйте репозиторий используя [GitHub Mac][60].
+2. Создайте новый файл статьи в папке `_posts`. Не забудьте назвать его в
+   соответствии с форматом `year-month-day-title.md` и добавить в начало
+   вводной блок.
+3. Закомитьте файл статьи и пушните в репозиторий. Может быть полезным посмотреть
+   [основы Git от компании Atlassian][34].
+4. Вот и все! Подождите пока GitHub Pages пересоберут сайт. Обычно это займет
+   менее 10 секунд, если у вас, конечно, не слишком много материалов.
+
+**Проблема №7**: Опять же, не нужно собирать сайт локально, что бы написать и
+опубликовать статью. Можно просто написать локально статью в маркдаун и пушнуть
+её со всеми картинками в репозиторий, после чего GitHub Pages пересоберет сайт на
+сервере.
+
 
 ### Создание темы для Jekyll
 
