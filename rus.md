@@ -329,20 +329,18 @@ WordPress в Disqus][58]. Затем, если вы используете Jekyl
     └── sitemap.xml # Карта сайта
 
 
-#### Liquid Templating
+### Шаблонизатор Liquid
 
-Jekyll uses the Liquid templating language to process templates. There are two
-important things to know about using Liquid.
+Jekyll использует язык шаблонов Liquid. Про него нужно знать две важные вещи:
 
-First, a **YAML front-matter** block is at the beginning of every content file
-. It specifies the layout of the page and other variables, like`title`, `date`
-and`tags`. It may include custom page variables that you’ve created, too.
+Во-первых, в начале каждого файла есть **вводной блок YAML**. Он определяет лаяут
+страницы и такие переменные, как `title`, `date` и `tags`. Кроме того, он может
+содержать и пользовательские переменные.
 
-**Liquid template tags** are used to execute loops and conditional statements
-and to output content.
+**Теги шаблонизатора Liquid** используются для создания циклов, условных операторов
+и для вывода материалов.
 
-For example, each blog post uses the following layout from
-`/_layouts/post.html`:
+Например, пусть каждая статья в блоге использует лаяут из `/_layouts/post.html`:
 
     ---
     layout: default
@@ -357,7 +355,7 @@ For example, each blog post uses the following layout from
       </div>
 
       <div class="date">
-        Written on {{ page.date | date: "%B %e, %Y" }}
+        Написано {{ page.date | date: "%B %e, %Y" }}
       </div>
 
       <div class="comments">
@@ -365,41 +363,37 @@ For example, each blog post uses the following layout from
       </div>
     </article>
 
+Вначале файла распологается вводной блок YAML, окруженный тремя дефисами. В нем
+мы определяем, что файл должен быть обработан как материалы лаяута `default.html`,
+который содержит шапку и подвал сайта.
 
-At the top of the file, YAML front matter is surrounded by triple hyphens. Here
-, we’re specifying that this file should be processed as the content for the
-`default.html` layout, which contains the website’s header and footer.
+Разметка Liquid использует двойные фигурные скопки для вывода материалов. Самый
+первые теги, которые это делают, в примере выше `{{ page.title }}` и `{{ content }}`,
+и они выводят заголовок и содержание статьи. [В Jekyll доступно множество
+переменных][73] для использования в шаблонах.
 
-Liquid markup uses double curly braces to output content. The first Liquid
-template tags that do this in the example above are`{{ page.title }}` and
-`{{ content }}`, which output the title and content of the blog post. A number
-of[Jekyll variables][73][44][74] are made available for outputting in templates
-.
+Одинарные фигурные скобки и квадратные скобки используются для создания условных
+операторов, циклов и отображения инклудов. В этом примере я добавил в конце файла
+блок комментариев Disqus, который находится в файле `/_includes/disqus.html`.
 
-Single curly braces and modules are used for conditionals and loops and for
-displaying includes. Here, I’m including a Disqus commenting partial at the
-bottom of the blog post, which will display the markup from
-`/_includes/disqus.html`.
 
-#### _config.yml
+### _config.yml
 
-This is Jekyll’s configuration file, containing all of the
-[settings for your Jekyll website][75][45][76]. The great thing about
-`_config.yml` is that you can also specify all of your own variables here to be
-pulled in via template files across the website.
+Это файл конфигурации Jekyll, который содержит [все настройки блога][75]. Что
+хорошо в `_config.yml`, так это то, что ты можешь задавать в нем пользовательские
+переменные, которые можно будет использовать в шаблонах сайта.
 
-For example, I use custom variables in Jekyll Now’s `_config.yml` to allow SVG
-icons to be easily included in the footer:
+Например, я использую пользовательскую переменную в `_config.yml` Jekyll Now,
+что бы удобно добавлять SVG-иконки в подвал блога.
 
-Here is `_config.yml`:
+Вот `_config.yml`:
 
-    # Includes an icon in the footer for each user name you enter
+    # Этот код добавляет иконку в подвал для каждого имени пользователя, которое вы введете
     footer-links:
       github: barryclark
       twitter: baznyc
 
-
-And here is `/_layouts/default.html`:
+И вот `/_layouts/default.html`:
 
     <footer class="footer">
       {% if site.footer-links.github %}<a href="http://github.com/{{ site.footer-links.github }}">{% include svg-icons/github.html %}</a>{% endif %}
@@ -407,19 +401,21 @@ And here is `/_layouts/default.html`:
     </footer>
     <figure>
 
-![Example of SVG footer icons][77]<figcaption>Example of SVG footer icons</
-figcaption
-></figure>
-The variable is outputted to the Twitter URL like this:
-`http://twitter.com/{{ site.footer-links.twitter }}`, so that the footer icon
-links to your Twitter profile. One other thing I really like about variables is
-that you can use them to optionally add pieces of UI. So, a footer icon wouldn’t
-be displayed if you don’t enter anything in the variable.
+![Пример SVG-иконок в подвале][77]
 
-**Common problem #9**: Note that `_config.yml` changes are loaded at compile
-time, not runtime. This means that if you’re running`jekyll serve` locally and
-you edit`_config.yml`, then changes to it won’t be detected. You’ll need to
-kill and rerun`jekyll serve`.
+*Пример SVG-иконок в подвале*
+
+Переменные добавляются в URL Twitter следующим образом:
+`http://twitter.com/{{ site.footer-links.twitter }}`, так что ссылка в футере
+указывает на вашу учетную запись в Twitter. Ещё одна вещь, которая меня радует в
+переменных, так это то, что их можно использовать что бы опционально отображать
+элементы интерфейса. Например, иконки в футере вообще не будут присутствовать,
+если вы не зададите значение переменной.
+
+**Проблема №9**: Обратите внимание, что изменения в `_config.yml` обновляются во
+время сборки а не в реальном времени. Это значит, что если вы запускаете локально
+`jekyll serve` и редактируете `_config.yml`, то изменения не применяться. Нужно
+остановить и снова запустить `jekyll serve`.
 
 
 ### Лаяут и статические страницы
